@@ -1,0 +1,21 @@
+heketi-cli cluster create
+heketi-cli cluster list
+heketi-cli cluster info {cluster-id}
+
+#{cluster-id} your cluster-id when you create cluster
+
+
+heketi-cli node --help    #you can work with help
+
+heketi-cli node add --zone 1 --cluster {cluster-id} --management-host-name gluster-1 --storage-host-name 192.168.1.107
+heketi-cli node add --zone 1 --cluster {cluster-id} --management-host-name gluster-2 --storage-host-name 192.168.1.108
+#NOTE: storage-host-name must be an IP Address, without it doesn't work
+
+heketi-cli node list
+
+heketi-cli device add --name /dev/sdb --node {node-id1}        #first node
+heketi-cli device add --name /dev/sda --node {node-id2}        #second node
+
+
+heketi-cli node info {node-id}
+
