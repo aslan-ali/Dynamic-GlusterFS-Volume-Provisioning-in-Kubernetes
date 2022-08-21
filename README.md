@@ -1,6 +1,9 @@
 # Dynamic-GlusterFS-Volume-Provisioning-in-Kubernetes
 
 
+![0 5o5Nhhs9MEklWDd-](https://user-images.githubusercontent.com/73755890/185797756-af54d2ff-c236-4ccb-9c56-d2cf7d8059a8.png)
+
+
 Firstly we install 3 glusterfs servers and 1 heketi RestAPI
 
 1) Glusterfs_Servers (3 nodes):
