@@ -22,3 +22,25 @@ configuration file: heketi_gluster_config
 5) K8s Pod, StorageClass, PVC 
 
 configuration file: deployment.yml
+
+
+NOTE: Version GlusterFS server and client on K8S nodes must match.
+
+
+
+#for testing:
+kubectl exec -it busybox -- sh           #because my pod is busybox, and folder /data
+cd data
+touch file.txt
+
+
+#delete pod 
+kubectl get pod busybox -o yaml > pod.yml
+kubectl delete pod busybox
+kubectl apply -f pod.yml
+kubectl exec -it busybox -- sh
+cd data
+
+#and if you see there file.txt , it's mean that your GlusterFS volume provisioning works correctly!!!
+
+That's all! Thanks!
