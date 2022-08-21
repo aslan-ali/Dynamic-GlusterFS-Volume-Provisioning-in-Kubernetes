@@ -1,0 +1,7 @@
+apt-get install software-properties-common
+add-apt-repository ppa:gluster/glusterfs-9
+apt install glusterfs-client
+
+#version must match in glusterfs server and client
+
+Note: we configure glusterfs-cient in every K8S nodes( Masters and Workers)
