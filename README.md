@@ -15,6 +15,10 @@ configuration file: glusterfs_k8s_config
 
 configuration file: heketi_restapi
 
+4) Create cluster , nodes , and device for dynamic volume provisioning in Heketi node:
+
+configuration file: heketi_gluster_config
+
 4) K8s Pod, StorageClass, PVC 
 
-configuration deployment.yml
+configuration file: deployment.yml
