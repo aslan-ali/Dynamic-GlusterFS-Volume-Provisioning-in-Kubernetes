@@ -19,6 +19,6 @@ configuration file: heketi_restapi
 
 configuration file: heketi_gluster_config
 
-4) K8s Pod, StorageClass, PVC 
+5) K8s Pod, StorageClass, PVC 
 
 configuration file: deployment.yml
