@@ -1,0 +1,6 @@
+apt-get update && apt-get upgrade -y
+wget -O - --quiet https://launchpad.net/ubuntu/+ppas\?name_filter\=glusterfs | grep "~gluster.*ubuntu/glusterfs"
+sudo add-apt-repository ppa:gluster/glusterfs-9
+apt-get update && sudo apt install --assume-yes glusterfs-server
+sudo systemctl enable --now glusterd
+sudo ufw allow 5667           #if we have firewall ufw
