@@ -1,0 +1,60 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: busybox
+  labels:
+    app: busybox
+spec:
+  containers:
+  - image: busybox
+    name: busybox
+    command:
+      - sleep
+      - "3600"
+    volumeMounts:
+    - name: gluster-volume
+      mountPath: /data
+  volumes:
+  - name: gluster-volume
+    persistentVolumeClaim:
+      claimName: gluster-pvc
+      
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+ name: gluster-pvc
+ annotations:
+   volume.beta.kubernetes.io/storage-class: glusterfs
+spec:
+ accessModes:
+  - ReadWriteOnce
+ resources:
+   requests:
+     storage: 1Gi
+     
+ ---
+ apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: glusterfs
+  annotations:
+    storageclass.beta.kubernetes.io/is-default-class: "true"
+provisioner: kubernetes.io/glusterfs
+parameters:
+  resturl: "http://192.168.1.111:8080"
+  restuser: "admin"
+  restuserkey: "secretpassword"
+  volumetype: "replicate:3"
+  
+  #resturl : ip address of heketi with port 8080
+  
+  
+  #NOTE: Don't forget install glusterfs-client in every K8S Node on UBUNTU, CentOS, Fedora : apt install glusterfs-fuse
+#add-apt-repository ppa:gluster/glusterfs-9
+#apt update
+#apt install -y glusterfs-client
+
+
+
